@@ -138,8 +138,8 @@ export default function PlayPage() {
     const startGame = () => {
         setStartTime(Date.now());
         startQuestionTimer();
-        // Debounce input
-        setTimeout(() => setInputReady(true), 500);
+        // Remove debounce for immediate input
+        setInputReady(true);
     };
 
     const startQuestionTimer = () => {
@@ -549,22 +549,22 @@ export default function PlayPage() {
             )}
 
             {/* Header / Timer */}
-            <div className="flex justify-between items-center p-4">
+            <div className="flex justify-between items-center px-4 py-2">
                 <button onClick={() => navigate('/')} className="text-slate-400 font-bold w-8">✕</button>
 
                 {/* Phase Badge */}
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center justify-center">
                     {phase === 'review' ? (
-                        <div className="bg-orange-100 text-orange-600 px-3 py-1 rounded-full text-xs font-bold border border-orange-200 mb-1">
+                        <div className="text-orange-500 text-xs font-bold mb-0.5">
                             🔄 復習 {currentIndex + 1}/{reviewQList.length}
                         </div>
                     ) : (
-                        <div className="bg-blue-100 text-blue-600 px-3 py-1 rounded-full text-xs font-bold border border-blue-200 mb-1">
+                        <div className="text-blue-500 text-xs font-bold mb-0.5">
                             📝 新しい問題 {currentIndex + 1}/{newQList.length}
                         </div>
                     )}
 
-                    <div className="h-2 bg-slate-200 rounded-full overflow-hidden w-32 sm:w-48">
+                    <div className="h-1.5 bg-slate-200 rounded-full overflow-hidden w-32 sm:w-48">
                         <div
                             className={`h-full transition-all duration-100 delay-0 ease-linear ${phase === 'review' ? 'bg-orange-400' : 'bg-blue-500'}`}
                             style={{ width: `${(timeLeft / (curriculum?.stageGraph.stages.find(s => s.id === stageId)?.round.secPerQuestion || 10)) * 100}%` }}
@@ -886,21 +886,11 @@ export default function PlayPage() {
                     </div>
                 )}
 
-                {/* 大きなフィードバック - 掛け算以外で表示 */}
-                {feedback && !currentQ.text.includes('×') && (
-                    <div className={`absolute inset-0 flex items-center justify-center z-10 bg-white/50 backdrop-blur-sm animate-in fade-in zoom-in duration-200`}>
-                        {feedback === 'correct' ? (
-                            <div className="text-[150px] text-red-500 leading-none">⭕️</div>
-                        ) : (
-                            <div className="text-[150px] text-blue-500 leading-none">❌</div>
-                        )}
-                    </div>
-                )}
             </div>
 
             {/* NumberPad - hide for skip_tap */}
             {currentQ?.metadata?.poolType !== 'skip_tap' && (
-                <div className={`bg-white rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)] pb-8 pt-4 transition-all duration-300 ${inputReady ? 'translate-y-0' : 'translate-y-full'}`}>
+                <div className={`bg-white rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)] pb-4 pt-2 transition-all duration-300 ${inputReady ? 'translate-y-0' : 'translate-y-full'}`}>
                     <NumberPad onInput={handleInput} />
                 </div>
             )}

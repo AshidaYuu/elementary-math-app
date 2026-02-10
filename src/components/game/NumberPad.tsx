@@ -33,7 +33,7 @@ export function NumberPad({ onInput, disabled }: NumberPadProps) {
                     onClick={() => onInput(btn.val)}
                     disabled={disabled}
                     className={`
-            flex items-center justify-center rounded-lg p-2 text-xl font-medium transition-colors active:scale-95
+            flex items-center justify-center rounded-lg p-2 text-lg font-medium transition-colors active:scale-95
             ${btn.primary
                             ? "bg-blue-100 text-blue-600 hover:bg-blue-200 active:bg-blue-300"
                             : btn.action
@@ -41,7 +41,7 @@ export function NumberPad({ onInput, disabled }: NumberPadProps) {
                                 : "bg-white text-slate-700 active:bg-slate-50 border border-slate-100"
                         }
             ${disabled ? "opacity-50 cursor-not-allowed" : "hover:brightness-95"}
-            h-14
+            h-12
           `}
                 >
                     {btn.label}

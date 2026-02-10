@@ -50,15 +50,15 @@ export function StandardInputPrompt({ question, currentInput, feedback }: Standa
                 <div className="text-3xl text-slate-300 font-bold">=</div>
                 <div className="min-w-[60px] h-[60px] border-b-2 border-blue-200 flex items-center justify-center relative">
                     <span className={`text-5xl font-bold animate-in zoom-in duration-100 leading-tight ${feedback === 'correct' ? 'text-green-500' :
-                            feedback === 'incorrect' ? 'text-red-500' :
-                                'text-blue-600'
+                        feedback === 'incorrect' ? 'text-red-500' :
+                            'text-blue-600'
                         }`}>
                         {feedback === 'incorrect' ? question.answer : currentInput}
                     </span>
 
-                    {/* 正解/不正解マーク - 入力欄の右横に小さく表示 */}
+                    {/* 正解/不正解マーク - 入力欄の右上に小さく表示 (SakuranboStyle) */}
                     {feedback && (
-                        <span className={`absolute -right-8 text-2xl ${feedback === 'correct' ? 'text-green-500' : 'text-red-500'
+                        <span className={`absolute -top-3 -right-3 w-8 h-8 rounded-full flex items-center justify-center text-lg font-bold shadow-md animate-in zoom-in duration-200 ${feedback === 'correct' ? 'bg-green-500 text-white' : 'bg-red-500 text-white'
                             }`}>
                             {feedback === 'correct' ? '○' : '×'}
                         </span>
