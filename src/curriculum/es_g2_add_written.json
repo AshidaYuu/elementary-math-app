@@ -1,0 +1,290 @@
+{
+    "version": "1.0.0",
+    "domain": "math",
+    "track": "ES_G2_ADD_WRITTEN",
+    "title": "小2 筆算たし算",
+    "globalRules": {
+        "pass": {
+            "accuracy": 0.9,
+            "mustFinishWithinTime": true,
+            "consecutivePassesRequired": 1
+        },
+        "round": {
+            "defaultQuestionsPerRound": 12,
+            "maxSameItemStreak": 2
+        },
+        "weakInjection": {
+            "enabled": true,
+            "injectRatio": 0.3,
+            "minInjectedPerRound": 2,
+            "maxInjectedPerRound": 4,
+            "promoteToWeakMiniStageAfterSameMistakeCount": 2
+        },
+        "timing": {
+            "mode": "fixed_sec_per_question",
+            "ui": {
+                "showCountdown": true,
+                "showPaceBar": true
+            }
+        }
+    },
+    "stageGraph": {
+        "startStageId": "G2W_PV_2D",
+        "stages": [
+            {
+                "id": "G2W_PV_2D",
+                "title": "位取りトレーニング（十・一）",
+                "skillId": "PLACE_VALUE_2D",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "place_value_2d",
+                    "range": [
+                        10,
+                        99
+                    ]
+                },
+                "round": {
+                    "questions": 12,
+                    "secPerQuestion": 5.0
+                },
+                "nextStageId": "G2W_PV_3D"
+            },
+            {
+                "id": "G2W_PV_3D",
+                "title": "位取りトレーニング（百・十・一）",
+                "skillId": "PLACE_VALUE_3D",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "place_value_3d",
+                    "range": [
+                        100,
+                        999
+                    ],
+                    "includeZeroMiddle": true
+                },
+                "round": {
+                    "questions": 12,
+                    "secPerQuestion": 6.0
+                },
+                "nextStageId": "G2W_FORM_FILL"
+            },
+            {
+                "id": "G2W_FORM_FILL",
+                "title": "筆算フォーム穴うめ",
+                "skillId": "WRITTEN_FORM",
+                "mode": "FILL",
+                "poolSpec": {
+                    "type": "written_form_fill",
+                    "operandARange": [
+                        10,
+                        99
+                    ],
+                    "operandBRange": [
+                        1,
+                        99
+                    ],
+                    "format": "place_lower"
+                },
+                "round": {
+                    "questions": 12,
+                    "secPerQuestion": 8.0
+                },
+                "nextStageId": "G2W_FORM_CHOICE"
+            },
+            {
+                "id": "G2W_FORM_CHOICE",
+                "title": "筆算フォーム（正しい並べ方を選ぶ）",
+                "skillId": "WRITTEN_FORM",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "written_form_choice",
+                    "operandARange": [
+                        10,
+                        99
+                    ],
+                    "operandBRange": [
+                        1,
+                        99
+                    ],
+                    "errorTypes": [
+                        "right_shift",
+                        "left_shift",
+                        "blank_shift"
+                    ]
+                },
+                "round": {
+                    "questions": 12,
+                    "secPerQuestion": 6.0
+                },
+                "nextStageId": "G2W_2D2D_NO_CARRY"
+            },
+            {
+                "id": "G2W_2D2D_NO_CARRY",
+                "title": "2けた+2けた（くり上がりなし）",
+                "skillId": "WRITTEN_ADD_2D2D",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "written_add_2d2d",
+                    "aRange": [
+                        10,
+                        89
+                    ],
+                    "bRange": [
+                        10,
+                        89
+                    ],
+                    "noCarry": true,
+                    "inputOrder": "ones_first"
+                },
+                "round": {
+                    "questions": 15,
+                    "secPerQuestion": 10.0
+                },
+                "nextStageId": "G2W_2D2D_NO_CARRY_RND"
+            },
+            {
+                "id": "G2W_2D2D_NO_CARRY_RND",
+                "title": "2けた+2けた（くり上がりなし：RND）",
+                "skillId": "WRITTEN_ADD_2D2D",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "written_add_2d2d",
+                    "aRange": [
+                        10,
+                        89
+                    ],
+                    "bRange": [
+                        10,
+                        89
+                    ],
+                    "noCarry": true,
+                    "inputOrder": "ones_first"
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 8.0
+                },
+                "nextStageId": "G2W_2D2D_CARRY_ONES"
+            },
+            {
+                "id": "G2W_2D2D_CARRY_ONES",
+                "title": "2けた+2けた（くり上がりあり：一の位）",
+                "skillId": "WRITTEN_ADD_2D2D_CARRY",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "written_add_2d2d",
+                    "aRange": [
+                        10,
+                        89
+                    ],
+                    "bRange": [
+                        10,
+                        89
+                    ],
+                    "carryRequired": true,
+                    "inputOrder": "ones_first"
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 12.0
+                },
+                "nextStageId": "G2W_CARRY_MARK"
+            },
+            {
+                "id": "G2W_CARRY_MARK",
+                "title": "くり上がりマーク練習",
+                "skillId": "CARRY_MARK",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "carry_mark_tap",
+                    "aRange": [
+                        10,
+                        89
+                    ],
+                    "bRange": [
+                        10,
+                        89
+                    ],
+                    "carryRatio": 0.5
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 5.0
+                },
+                "nextStageId": "G2W_2D2D_MIX"
+            },
+            {
+                "id": "G2W_2D2D_MIX",
+                "title": "2けた+2けた（くり上がり総合）",
+                "skillId": "WRITTEN_ADD_2D2D_MIX",
+                "mode": "MIX",
+                "poolSpec": {
+                    "type": "written_add_2d2d",
+                    "aRange": [
+                        10,
+                        89
+                    ],
+                    "bRange": [
+                        10,
+                        89
+                    ],
+                    "inputOrder": "ones_first"
+                },
+                "round": {
+                    "questions": 30,
+                    "secPerQuestion": 10.0
+                },
+                "nextStageId": "G2W_VERIFY"
+            },
+            {
+                "id": "G2W_VERIFY",
+                "title": "筆算たし算（検算）",
+                "skillId": "WRITTEN_VERIFY",
+                "mode": "FILL",
+                "poolSpec": {
+                    "type": "written_verify",
+                    "aRange": [
+                        10,
+                        89
+                    ],
+                    "bRange": [
+                        10,
+                        89
+                    ],
+                    "verifyType": "random"
+                },
+                "round": {
+                    "questions": 12,
+                    "secPerQuestion": 15.0
+                },
+                "nextStageId": "G2W_REVIEW_GATE"
+            },
+            {
+                "id": "G2W_REVIEW_GATE",
+                "title": "復習ゲート：2けた+2けた（総合）",
+                "skillId": "WRITTEN_ADD_REVIEW",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "written_add_2d2d",
+                    "aRange": [
+                        10,
+                        89
+                    ],
+                    "bRange": [
+                        10,
+                        89
+                    ],
+                    "inputOrder": "ones_first"
+                },
+                "round": {
+                    "questions": 30,
+                    "secPerQuestion": 8.0
+                },
+                "nextStageId": null,
+                "onComplete": {
+                    "message": "小2 筆算たし算クリア！"
+                }
+            }
+        ]
+    }
+}

@@ -1,0 +1,1656 @@
+{
+  "version": "1.0.0",
+  "domain": "math",
+  "track": "ES_G2_MUL",
+  "title": "九九マスター（導入＋後半ゲート＋段間復習）",
+  "globalRules": {
+    "pass": {
+      "accuracy": 1,
+      "mustFinishWithinTime": true,
+      "consecutivePassesRequired": 1
+    },
+    "round": {
+      "defaultQuestionsPerRound": 20,
+      "maxSameItemStreak": 2
+    },
+    "weakInjection": {
+      "enabled": true,
+      "injectRatio": 0.3,
+      "minInjectedPerRound": 3,
+      "maxInjectedPerRound": 10,
+      "promoteToWeakMiniStageAfterSameMistakeCount": 2
+    },
+    "timing": {
+      "mode": "fixed_sec_per_question",
+      "ui": {
+        "showCountdown": true,
+        "showPaceBar": true
+      }
+    }
+  },
+  "stageGraph": {
+    "startStageId": "PRE-2-ELEV",
+    "stages": [
+      {
+        "id": "PRE-2-ELEV",
+        "title": "導入1：エレベーター足し算（+2）",
+        "skillId": "PRE_ELEV_2",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "elev_add",
+          "add": 2,
+          "start": 0,
+          "stepsRange": [
+            1,
+            9
+          ],
+          "format": "equation"
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 4
+        },
+        "nextStageId": "PRE-2-SKIP"
+      },
+      {
+        "id": "PRE-2-SKIP",
+        "title": "導入2：2とび",
+        "skillId": "PRE_SKIP_2",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "skip_count",
+          "step": 2,
+          "from": 2,
+          "to": 18,
+          "showNumbers": [
+            2,
+            4,
+            8
+          ],
+          "blanks": 6
+        },
+        "round": {
+          "questions": 1,
+          "secPerQuestion": 30
+        },
+        "nextStageId": "PRE-2-TAP"
+      },
+      {
+        "id": "PRE-2-TAP",
+        "title": "導入3：2とびタップ",
+        "skillId": "PRE_TAP_2",
+        "mode": "TAP",
+        "poolSpec": {
+          "type": "skip_tap",
+          "step": 2,
+          "from": 2,
+          "to": 18,
+          "totalNumbers": 12,
+          "timeLimit": 15
+        },
+        "round": {
+          "questions": 3,
+          "secPerQuestion": 15
+        },
+        "nextStageId": "MUL-2-SEQ-1to5"
+      },
+      {
+        "id": "MUL-2-SEQ-1to5",
+        "title": "2の段（1〜5）順番",
+        "skillId": "MUL_TABLE_2",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 2,
+          "range": [
+            1,
+            5
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-2-RND-1to5"
+      },
+      {
+        "id": "MUL-2-RND-1to5",
+        "title": "2の段（1〜5）ランダム",
+        "skillId": "MUL_TABLE_2",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 2,
+          "range": [
+            1,
+            5
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.3
+        },
+        "nextStageId": "MUL-2-SEQ-6to9"
+      },
+      {
+        "id": "MUL-2-SEQ-6to9",
+        "title": "2の段（6〜9）順番",
+        "skillId": "MUL_TABLE_2",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 2,
+          "range": [
+            6,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-2-RND-6to9"
+      },
+      {
+        "id": "MUL-2-RND-6to9",
+        "title": "2の段（6〜9）ランダム",
+        "skillId": "MUL_TABLE_2",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 2,
+          "range": [
+            6,
+            9
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "MUL-2-SEQ-1to9"
+      },
+      {
+        "id": "MUL-2-SEQ-1to9",
+        "title": "2の段（1〜9）順番（統合）",
+        "skillId": "MUL_TABLE_2",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 2,
+          "range": [
+            1,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 27,
+          "secPerQuestion": 2.6
+        },
+        "nextStageId": "MUL-2-RND-1to9"
+      },
+      {
+        "id": "MUL-2-RND-1to9",
+        "title": "2の段（1〜9）ランダム（統合）",
+        "skillId": "MUL_TABLE_2",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 2,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2
+        },
+        "nextStageId": "MUL-REVIEW-2to2"
+      },
+      {
+        "id": "MUL-REVIEW-2to2",
+        "title": "復習ゲート：2の段",
+        "skillId": "MUL_REVIEW",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_review",
+          "fromN": 2,
+          "toN": 2,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.1
+        },
+        "nextStageId": "PRE-3-ELEV"
+      },
+      {
+        "id": "PRE-3-ELEV",
+        "title": "導入1：エレベーター足し算（+3）",
+        "skillId": "PRE_ELEV_3",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "elev_add",
+          "add": 3,
+          "start": 0,
+          "stepsRange": [
+            1,
+            9
+          ],
+          "format": "equation"
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 4
+        },
+        "nextStageId": "PRE-3-SKIP"
+      },
+      {
+        "id": "PRE-3-SKIP",
+        "title": "導入2：3とび",
+        "skillId": "PRE_SKIP_3",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "skip_count",
+          "step": 3,
+          "from": 3,
+          "to": 27,
+          "showNumbers": [
+            3,
+            6,
+            12
+          ],
+          "blanks": 6
+        },
+        "round": {
+          "questions": 1,
+          "secPerQuestion": 30
+        },
+        "nextStageId": "PRE-3-TAP"
+      },
+      {
+        "id": "PRE-3-TAP",
+        "title": "導入3：3とびタップ",
+        "skillId": "PRE_TAP_3",
+        "mode": "TAP",
+        "poolSpec": {
+          "type": "skip_tap",
+          "step": 3,
+          "from": 3,
+          "to": 27,
+          "totalNumbers": 12,
+          "timeLimit": 15
+        },
+        "round": {
+          "questions": 3,
+          "secPerQuestion": 15
+        },
+        "nextStageId": "MUL-3-SEQ-1to5"
+      },
+      {
+        "id": "MUL-3-SEQ-1to5",
+        "title": "3の段（1〜5）順番",
+        "skillId": "MUL_TABLE_3",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 3,
+          "range": [
+            1,
+            5
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-3-RND-1to5"
+      },
+      {
+        "id": "MUL-3-RND-1to5",
+        "title": "3の段（1〜5）ランダム",
+        "skillId": "MUL_TABLE_3",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 3,
+          "range": [
+            1,
+            5
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.3
+        },
+        "nextStageId": "MUL-3-SEQ-6to9"
+      },
+      {
+        "id": "MUL-3-SEQ-6to9",
+        "title": "3の段（6〜9）順番",
+        "skillId": "MUL_TABLE_3",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 3,
+          "range": [
+            6,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-3-RND-6to9"
+      },
+      {
+        "id": "MUL-3-RND-6to9",
+        "title": "3の段（6〜9）ランダム",
+        "skillId": "MUL_TABLE_3",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 3,
+          "range": [
+            6,
+            9
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "MUL-3-SEQ-1to9"
+      },
+      {
+        "id": "MUL-3-SEQ-1to9",
+        "title": "3の段（1〜9）順番（統合）",
+        "skillId": "MUL_TABLE_3",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 3,
+          "range": [
+            1,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 27,
+          "secPerQuestion": 2.6
+        },
+        "nextStageId": "MUL-3-RND-1to9"
+      },
+      {
+        "id": "MUL-3-RND-1to9",
+        "title": "3の段（1〜9）ランダム（統合）",
+        "skillId": "MUL_TABLE_3",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 3,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2
+        },
+        "nextStageId": "MUL-REVIEW-2to3"
+      },
+      {
+        "id": "MUL-REVIEW-2to3",
+        "title": "復習ゲート：2〜3の段",
+        "skillId": "MUL_REVIEW",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_review",
+          "fromN": 2,
+          "toN": 3,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.1
+        },
+        "nextStageId": "PRE-4-ELEV"
+      },
+      {
+        "id": "PRE-4-ELEV",
+        "title": "導入1：エレベーター足し算（+4）",
+        "skillId": "PRE_ELEV_4",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "elev_add",
+          "add": 4,
+          "start": 0,
+          "stepsRange": [
+            1,
+            9
+          ],
+          "format": "equation"
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 4
+        },
+        "nextStageId": "PRE-4-SKIP"
+      },
+      {
+        "id": "PRE-4-SKIP",
+        "title": "導入2：4とび",
+        "skillId": "PRE_SKIP_4",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "skip_count",
+          "step": 4,
+          "from": 4,
+          "to": 36,
+          "showNumbers": [
+            4,
+            8,
+            16
+          ],
+          "blanks": 6
+        },
+        "round": {
+          "questions": 1,
+          "secPerQuestion": 30
+        },
+        "nextStageId": "PRE-4-TAP"
+      },
+      {
+        "id": "PRE-4-TAP",
+        "title": "導入3：4とびタップ",
+        "skillId": "PRE_TAP_4",
+        "mode": "TAP",
+        "poolSpec": {
+          "type": "skip_tap",
+          "step": 4,
+          "from": 4,
+          "to": 36,
+          "totalNumbers": 12,
+          "timeLimit": 15
+        },
+        "round": {
+          "questions": 3,
+          "secPerQuestion": 15
+        },
+        "nextStageId": "MUL-4-SEQ-1to5"
+      },
+      {
+        "id": "MUL-4-SEQ-1to5",
+        "title": "4の段（1〜5）順番",
+        "skillId": "MUL_TABLE_4",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 4,
+          "range": [
+            1,
+            5
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-4-RND-1to5"
+      },
+      {
+        "id": "MUL-4-RND-1to5",
+        "title": "4の段（1〜5）ランダム",
+        "skillId": "MUL_TABLE_4",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 4,
+          "range": [
+            1,
+            5
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.3
+        },
+        "nextStageId": "MUL-4-SEQ-6to9"
+      },
+      {
+        "id": "MUL-4-SEQ-6to9",
+        "title": "4の段（6〜9）順番",
+        "skillId": "MUL_TABLE_4",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 4,
+          "range": [
+            6,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-4-RND-6to9"
+      },
+      {
+        "id": "MUL-4-RND-6to9",
+        "title": "4の段（6〜9）ランダム",
+        "skillId": "MUL_TABLE_4",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 4,
+          "range": [
+            6,
+            9
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "MUL-4-SEQ-1to9"
+      },
+      {
+        "id": "MUL-4-SEQ-1to9",
+        "title": "4の段（1〜9）順番（統合）",
+        "skillId": "MUL_TABLE_4",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 4,
+          "range": [
+            1,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 27,
+          "secPerQuestion": 2.6
+        },
+        "nextStageId": "MUL-4-RND-1to9"
+      },
+      {
+        "id": "MUL-4-RND-1to9",
+        "title": "4の段（1〜9）ランダム（統合）",
+        "skillId": "MUL_TABLE_4",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 4,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2
+        },
+        "nextStageId": "MUL-REVIEW-2to4"
+      },
+      {
+        "id": "MUL-REVIEW-2to4",
+        "title": "復習ゲート：2〜4の段",
+        "skillId": "MUL_REVIEW",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_review",
+          "fromN": 2,
+          "toN": 4,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.1
+        },
+        "nextStageId": "PRE-5-ELEV"
+      },
+      {
+        "id": "PRE-5-ELEV",
+        "title": "導入1：エレベーター足し算（+5）",
+        "skillId": "PRE_ELEV_5",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "elev_add",
+          "add": 5,
+          "start": 0,
+          "stepsRange": [
+            1,
+            9
+          ],
+          "format": "equation"
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 4
+        },
+        "nextStageId": "PRE-5-SKIP"
+      },
+      {
+        "id": "PRE-5-SKIP",
+        "title": "導入2：5とび",
+        "skillId": "PRE_SKIP_5",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "skip_count",
+          "step": 5,
+          "from": 5,
+          "to": 45,
+          "showNumbers": [
+            5,
+            10,
+            20
+          ],
+          "blanks": 6
+        },
+        "round": {
+          "questions": 1,
+          "secPerQuestion": 30
+        },
+        "nextStageId": "PRE-5-TAP"
+      },
+      {
+        "id": "PRE-5-TAP",
+        "title": "導入3：5とびタップ",
+        "skillId": "PRE_TAP_5",
+        "mode": "TAP",
+        "poolSpec": {
+          "type": "skip_tap",
+          "step": 5,
+          "from": 5,
+          "to": 45,
+          "totalNumbers": 12,
+          "timeLimit": 15
+        },
+        "round": {
+          "questions": 3,
+          "secPerQuestion": 15
+        },
+        "nextStageId": "MUL-5-SEQ-1to5"
+      },
+      {
+        "id": "MUL-5-SEQ-1to5",
+        "title": "5の段（1〜5）順番",
+        "skillId": "MUL_TABLE_5",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 5,
+          "range": [
+            1,
+            5
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.7
+        },
+        "nextStageId": "MUL-5-RND-1to5"
+      },
+      {
+        "id": "MUL-5-RND-1to5",
+        "title": "5の段（1〜5）ランダム",
+        "skillId": "MUL_TABLE_5",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 5,
+          "range": [
+            1,
+            5
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "MUL-5-SEQ-6to9"
+      },
+      {
+        "id": "MUL-5-SEQ-6to9",
+        "title": "5の段（6〜9）順番",
+        "skillId": "MUL_TABLE_5",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 5,
+          "range": [
+            6,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 2.7
+        },
+        "nextStageId": "MUL-5-RND-6to9"
+      },
+      {
+        "id": "MUL-5-RND-6to9",
+        "title": "5の段（6〜9）ランダム",
+        "skillId": "MUL_TABLE_5",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 5,
+          "range": [
+            6,
+            9
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.1
+        },
+        "nextStageId": "MUL-5-SEQ-1to9"
+      },
+      {
+        "id": "MUL-5-SEQ-1to9",
+        "title": "5の段（1〜9）順番（統合）",
+        "skillId": "MUL_TABLE_5",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 5,
+          "range": [
+            1,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 27,
+          "secPerQuestion": 2.5
+        },
+        "nextStageId": "MUL-5-RND-1to9"
+      },
+      {
+        "id": "MUL-5-RND-1to9",
+        "title": "5の段（1〜9）ランダム（統合）",
+        "skillId": "MUL_TABLE_5",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 5,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 1.95
+        },
+        "nextStageId": "MUL-REVIEW-2to5"
+      },
+      {
+        "id": "MUL-REVIEW-2to5",
+        "title": "復習ゲート：2〜5の段",
+        "skillId": "MUL_REVIEW",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_review",
+          "fromN": 2,
+          "toN": 5,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.1
+        },
+        "nextStageId": "PRE-6-ELEV"
+      },
+      {
+        "id": "PRE-6-ELEV",
+        "title": "導入1：エレベーター足し算（+6）",
+        "skillId": "PRE_ELEV_6",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "elev_add",
+          "add": 6,
+          "start": 0,
+          "stepsRange": [
+            1,
+            9
+          ],
+          "format": "equation"
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 4
+        },
+        "nextStageId": "PRE-6-SKIP"
+      },
+      {
+        "id": "PRE-6-SKIP",
+        "title": "導入2：6とび",
+        "skillId": "PRE_SKIP_6",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "skip_count",
+          "step": 6,
+          "from": 6,
+          "to": 54,
+          "showNumbers": [
+            6,
+            12,
+            24
+          ],
+          "blanks": 6
+        },
+        "round": {
+          "questions": 1,
+          "secPerQuestion": 30
+        },
+        "nextStageId": "PRE-6-TAP"
+      },
+      {
+        "id": "PRE-6-TAP",
+        "title": "導入3：6とびタップ",
+        "skillId": "PRE_TAP_6",
+        "mode": "TAP",
+        "poolSpec": {
+          "type": "skip_tap",
+          "step": 6,
+          "from": 6,
+          "to": 54,
+          "totalNumbers": 12,
+          "timeLimit": 15
+        },
+        "round": {
+          "questions": 3,
+          "secPerQuestion": 15
+        },
+        "nextStageId": "MUL-6-SEQ-1to5"
+      },
+      {
+        "id": "MUL-6-SEQ-1to5",
+        "title": "6の段（1〜5）順番",
+        "skillId": "MUL_TABLE_6",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 6,
+          "range": [
+            1,
+            5
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-6-RND-1to5"
+      },
+      {
+        "id": "MUL-6-RND-1to5",
+        "title": "6の段（1〜5）ランダム",
+        "skillId": "MUL_TABLE_6",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 6,
+          "range": [
+            1,
+            5
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.3
+        },
+        "nextStageId": "MUL-6-SEQ-6to9"
+      },
+      {
+        "id": "MUL-6-SEQ-6to9",
+        "title": "6の段（6〜9）順番",
+        "skillId": "MUL_TABLE_6",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 6,
+          "range": [
+            6,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-6-RND-6to9"
+      },
+      {
+        "id": "MUL-6-RND-6to9",
+        "title": "6の段（6〜9）ランダム",
+        "skillId": "MUL_TABLE_6",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 6,
+          "range": [
+            6,
+            9
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "MUL-6-SEQ-1to9"
+      },
+      {
+        "id": "MUL-6-SEQ-1to9",
+        "title": "6の段（1〜9）順番（統合）",
+        "skillId": "MUL_TABLE_6",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 6,
+          "range": [
+            1,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 27,
+          "secPerQuestion": 2.6
+        },
+        "nextStageId": "MUL-6-RND-1to9"
+      },
+      {
+        "id": "MUL-6-RND-1to9",
+        "title": "6の段（1〜9）ランダム（統合）",
+        "skillId": "MUL_TABLE_6",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 6,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2
+        },
+        "nextStageId": "MUL-REVIEW-2to6"
+      },
+      {
+        "id": "MUL-REVIEW-2to6",
+        "title": "復習ゲート：2〜6の段",
+        "skillId": "MUL_REVIEW",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_review",
+          "fromN": 2,
+          "toN": 6,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.1
+        },
+        "nextStageId": "PRE-7-ELEV"
+      },
+      {
+        "id": "PRE-7-ELEV",
+        "title": "導入1：エレベーター足し算（+7）",
+        "skillId": "PRE_ELEV_7",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "elev_add",
+          "add": 7,
+          "start": 0,
+          "stepsRange": [
+            1,
+            9
+          ],
+          "format": "equation"
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 4
+        },
+        "nextStageId": "PRE-7-SKIP"
+      },
+      {
+        "id": "PRE-7-SKIP",
+        "title": "導入2：7とび",
+        "skillId": "PRE_SKIP_7",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "skip_count",
+          "step": 7,
+          "from": 7,
+          "to": 63,
+          "showNumbers": [
+            7,
+            14,
+            28
+          ],
+          "blanks": 6
+        },
+        "round": {
+          "questions": 1,
+          "secPerQuestion": 30
+        },
+        "nextStageId": "PRE-7-TAP"
+      },
+      {
+        "id": "PRE-7-TAP",
+        "title": "導入3：7とびタップ",
+        "skillId": "PRE_TAP_7",
+        "mode": "TAP",
+        "poolSpec": {
+          "type": "skip_tap",
+          "step": 7,
+          "from": 7,
+          "to": 63,
+          "totalNumbers": 12,
+          "timeLimit": 15
+        },
+        "round": {
+          "questions": 3,
+          "secPerQuestion": 15
+        },
+        "nextStageId": "MUL-7-SEQ-1to5"
+      },
+      {
+        "id": "MUL-7-SEQ-1to5",
+        "title": "7の段（1〜5）順番",
+        "skillId": "MUL_TABLE_7",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 7,
+          "range": [
+            1,
+            5
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.9
+        },
+        "nextStageId": "MUL-7-RND-1to5"
+      },
+      {
+        "id": "MUL-7-RND-1to5",
+        "title": "7の段（1〜5）ランダム",
+        "skillId": "MUL_TABLE_7",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 7,
+          "range": [
+            1,
+            5
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.35
+        },
+        "nextStageId": "MUL-7-SEQ-6to9"
+      },
+      {
+        "id": "MUL-7-SEQ-6to9",
+        "title": "7の段（6〜9）順番",
+        "skillId": "MUL_TABLE_7",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 7,
+          "range": [
+            6,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 2.9
+        },
+        "nextStageId": "MUL-7-RND-6to9"
+      },
+      {
+        "id": "MUL-7-RND-6to9",
+        "title": "7の段（6〜9）ランダム",
+        "skillId": "MUL_TABLE_7",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 7,
+          "range": [
+            6,
+            9
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.25
+        },
+        "nextStageId": "MUL-7-SEQ-1to9"
+      },
+      {
+        "id": "MUL-7-SEQ-1to9",
+        "title": "7の段（1〜9）順番（統合）",
+        "skillId": "MUL_TABLE_7",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 7,
+          "range": [
+            1,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 27,
+          "secPerQuestion": 2.7
+        },
+        "nextStageId": "MUL-7-RND-1to9"
+      },
+      {
+        "id": "MUL-7-RND-1to9",
+        "title": "7の段（1〜9）ランダム（統合）",
+        "skillId": "MUL_TABLE_7",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 7,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.05
+        },
+        "nextStageId": "MUL-REVIEW-2to7"
+      },
+      {
+        "id": "MUL-REVIEW-2to7",
+        "title": "復習ゲート：2〜7の段",
+        "skillId": "MUL_REVIEW",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_review",
+          "fromN": 2,
+          "toN": 7,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.15
+        },
+        "nextStageId": "PRE-8-ELEV"
+      },
+      {
+        "id": "PRE-8-ELEV",
+        "title": "導入1：エレベーター足し算（+8）",
+        "skillId": "PRE_ELEV_8",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "elev_add",
+          "add": 8,
+          "start": 0,
+          "stepsRange": [
+            1,
+            9
+          ],
+          "format": "equation"
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 4
+        },
+        "nextStageId": "PRE-8-SKIP"
+      },
+      {
+        "id": "PRE-8-SKIP",
+        "title": "導入2：8とび",
+        "skillId": "PRE_SKIP_8",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "skip_count",
+          "step": 8,
+          "from": 8,
+          "to": 72,
+          "showNumbers": [
+            8,
+            16,
+            32
+          ],
+          "blanks": 6
+        },
+        "round": {
+          "questions": 1,
+          "secPerQuestion": 30
+        },
+        "nextStageId": "PRE-8-TAP"
+      },
+      {
+        "id": "PRE-8-TAP",
+        "title": "導入3：8とびタップ",
+        "skillId": "PRE_TAP_8",
+        "mode": "TAP",
+        "poolSpec": {
+          "type": "skip_tap",
+          "step": 8,
+          "from": 8,
+          "to": 72,
+          "totalNumbers": 12,
+          "timeLimit": 15
+        },
+        "round": {
+          "questions": 3,
+          "secPerQuestion": 15
+        },
+        "nextStageId": "MUL-8-SEQ-1to5"
+      },
+      {
+        "id": "MUL-8-SEQ-1to5",
+        "title": "8の段（1〜5）順番",
+        "skillId": "MUL_TABLE_8",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 8,
+          "range": [
+            1,
+            5
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.9
+        },
+        "nextStageId": "MUL-8-RND-1to5"
+      },
+      {
+        "id": "MUL-8-RND-1to5",
+        "title": "8の段（1〜5）ランダム",
+        "skillId": "MUL_TABLE_8",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 8,
+          "range": [
+            1,
+            5
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.4
+        },
+        "nextStageId": "MUL-8-SEQ-6to9"
+      },
+      {
+        "id": "MUL-8-SEQ-6to9",
+        "title": "8の段（6〜9）順番",
+        "skillId": "MUL_TABLE_8",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 8,
+          "range": [
+            6,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 2.9
+        },
+        "nextStageId": "MUL-8-RND-6to9"
+      },
+      {
+        "id": "MUL-8-RND-6to9",
+        "title": "8の段（6〜9）ランダム",
+        "skillId": "MUL_TABLE_8",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 8,
+          "range": [
+            6,
+            9
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.3
+        },
+        "nextStageId": "MUL-8-SEQ-1to9"
+      },
+      {
+        "id": "MUL-8-SEQ-1to9",
+        "title": "8の段（1〜9）順番（統合）",
+        "skillId": "MUL_TABLE_8",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 8,
+          "range": [
+            1,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 27,
+          "secPerQuestion": 2.7
+        },
+        "nextStageId": "MUL-8-RND-1to9"
+      },
+      {
+        "id": "MUL-8-RND-1to9",
+        "title": "8の段（1〜9）ランダム（統合）",
+        "skillId": "MUL_TABLE_8",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 8,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.1
+        },
+        "nextStageId": "MUL-REVIEW-2to8"
+      },
+      {
+        "id": "MUL-REVIEW-2to8",
+        "title": "復習ゲート：2〜8の段",
+        "skillId": "MUL_REVIEW",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_review",
+          "fromN": 2,
+          "toN": 8,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "PRE-9-ELEV"
+      },
+      {
+        "id": "PRE-9-ELEV",
+        "title": "導入1：エレベーター足し算（+9）",
+        "skillId": "PRE_ELEV_9",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "elev_add",
+          "add": 9,
+          "start": 0,
+          "stepsRange": [
+            1,
+            9
+          ],
+          "format": "equation"
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 4
+        },
+        "nextStageId": "PRE-9-SKIP"
+      },
+      {
+        "id": "PRE-9-SKIP",
+        "title": "導入2：9とび",
+        "skillId": "PRE_SKIP_9",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "skip_count",
+          "step": 9,
+          "from": 9,
+          "to": 81,
+          "showNumbers": [
+            9,
+            18,
+            36
+          ],
+          "blanks": 6
+        },
+        "round": {
+          "questions": 1,
+          "secPerQuestion": 30
+        },
+        "nextStageId": "PRE-9-TAP"
+      },
+      {
+        "id": "PRE-9-TAP",
+        "title": "導入3：9とびタップ",
+        "skillId": "PRE_TAP_9",
+        "mode": "TAP",
+        "poolSpec": {
+          "type": "skip_tap",
+          "step": 9,
+          "from": 9,
+          "to": 81,
+          "totalNumbers": 12,
+          "timeLimit": 15
+        },
+        "round": {
+          "questions": 3,
+          "secPerQuestion": 15
+        },
+        "nextStageId": "MUL-9-SEQ-1to5"
+      },
+      {
+        "id": "MUL-9-SEQ-1to5",
+        "title": "9の段（1〜5）順番",
+        "skillId": "MUL_TABLE_9",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 9,
+          "range": [
+            1,
+            5
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 3
+        },
+        "nextStageId": "MUL-9-RND-1to5"
+      },
+      {
+        "id": "MUL-9-RND-1to5",
+        "title": "9の段（1〜5）ランダム",
+        "skillId": "MUL_TABLE_9",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 9,
+          "range": [
+            1,
+            5
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.5
+        },
+        "nextStageId": "MUL-9-SEQ-6to9"
+      },
+      {
+        "id": "MUL-9-SEQ-6to9",
+        "title": "9の段（6〜9）順番",
+        "skillId": "MUL_TABLE_9",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 9,
+          "range": [
+            6,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 3
+        },
+        "nextStageId": "MUL-9-RND-6to9"
+      },
+      {
+        "id": "MUL-9-RND-6to9",
+        "title": "9の段（6〜9）ランダム",
+        "skillId": "MUL_TABLE_9",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 9,
+          "range": [
+            6,
+            9
+          ]
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.4
+        },
+        "nextStageId": "MUL-9-SEQ-1to9"
+      },
+      {
+        "id": "MUL-9-SEQ-1to9",
+        "title": "9の段（1〜9）順番（統合）",
+        "skillId": "MUL_TABLE_9",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 9,
+          "range": [
+            1,
+            9
+          ],
+          "order": "asc"
+        },
+        "round": {
+          "questions": 27,
+          "secPerQuestion": 2.8
+        },
+        "nextStageId": "MUL-9-RND-1to9"
+      },
+      {
+        "id": "MUL-9-RND-1to9",
+        "title": "9の段（1〜9）ランダム（統合）",
+        "skillId": "MUL_TABLE_9",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_table",
+          "n": 9,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "MUL-REVIEW-2to9"
+      },
+      {
+        "id": "MUL-REVIEW-2to9",
+        "title": "最終復習ゲート：2〜9の段",
+        "skillId": "MUL_REVIEW",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_review",
+          "fromN": 2,
+          "toN": 9,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 36,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "MUL-FINAL-MIX-2to9"
+      },
+      {
+        "id": "MUL-FINAL-MIX-2to9",
+        "title": "最終ボス：九九ぜんぶ（2〜9）ランダム",
+        "skillId": "MUL_FINAL",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "mul_mix",
+          "fromN": 2,
+          "toN": 9,
+          "range": [
+            1,
+            9
+          ]
+        },
+        "round": {
+          "questions": 60,
+          "secPerQuestion": 1.9
+        },
+        "nextStageId": null
+      }
+    ]
+  }
+}

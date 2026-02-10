@@ -1,0 +1,1133 @@
+{
+  "version": "1.0.0",
+  "domain": "math",
+  "track": "ES_G1_ADD",
+  "title": "小1 足し算（超反復・時間ゲート）",
+  "globalRules": {
+    "pass": {
+      "accuracy": 0.9,
+      "mustFinishWithinTime": true,
+      "consecutivePassesRequired": 1
+    },
+    "round": {
+      "defaultQuestionsPerRound": 10,
+      "maxSameItemStreak": 2
+    },
+    "weakInjection": {
+      "enabled": true,
+      "injectRatio": 0.3,
+      "minInjectedPerRound": 2,
+      "maxInjectedPerRound": 4,
+      "promoteToWeakMiniStageAfterSameMistakeCount": 2
+    },
+    "timing": {
+      "mode": "fixed_sec_per_question",
+      "ui": {
+        "showCountdown": true,
+        "showPaceBar": true
+      }
+    }
+  },
+  "stageGraph": {
+    "startStageId": "G1A_NUM10_MAKE_SEQ_1_5",
+    "stages": [
+      {
+        "id": "G1A_NUM10_MAKE_SEQ_1_5",
+        "title": "10の相棒（1〜5）順番",
+        "skillId": "NUM10_MAKE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "ten_complement",
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 3.0
+        },
+        "nextStageId": "G1A_NUM10_MAKE_RND_1_5"
+      },
+      {
+        "id": "G1A_NUM10_MAKE_RND_1_5",
+        "title": "10の相棒（1〜5）ランダム",
+        "skillId": "NUM10_MAKE",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "ten_complement",
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5
+          ]
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 2.4
+        },
+        "nextStageId": "G1A_NUM10_MAKE_SEQ_6_9"
+      },
+      {
+        "id": "G1A_NUM10_MAKE_SEQ_6_9",
+        "title": "10の相棒（6〜9）順番",
+        "skillId": "NUM10_MAKE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "ten_complement",
+          "numbers": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 3.2
+        },
+        "nextStageId": "G1A_NUM10_MAKE_RND_6_9"
+      },
+      {
+        "id": "G1A_NUM10_MAKE_RND_6_9",
+        "title": "10の相棒（6〜9）ランダム",
+        "skillId": "NUM10_MAKE",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "ten_complement",
+          "numbers": [
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 2.6
+        },
+        "nextStageId": "G1A_NUM10_MAKE_MIX_1_9"
+      },
+      {
+        "id": "G1A_NUM10_MAKE_MIX_1_9",
+        "title": "10の相棒（1〜9）混合",
+        "skillId": "NUM10_MAKE",
+        "mode": "MIX",
+        "poolSpec": {
+          "type": "ten_complement",
+          "numbers": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        },
+        "round": {
+          "questions": 20,
+          "secPerQuestion": 2.0
+        },
+        "nextStageId": "G1B_ADD_NO_CARRY_SEQ_SMALL"
+      },
+      {
+        "id": "G1B_ADD_NO_CARRY_SEQ_SMALL",
+        "title": "1けた+1けた（くり上がりなし：やさしい）順番",
+        "skillId": "ADD_1D_NO_CARRY",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            1,
+            5
+          ],
+          "bRange": [
+            1,
+            5
+          ],
+          "constraints": {
+            "sumMax": 9
+          }
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 3.0
+        },
+        "nextStageId": "G1B_ADD_NO_CARRY_RND_SMALL"
+      },
+      {
+        "id": "G1B_ADD_NO_CARRY_RND_SMALL",
+        "title": "1けた+1けた（くり上がりなし：やさしい）ランダム",
+        "skillId": "ADD_1D_NO_CARRY",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            1,
+            5
+          ],
+          "bRange": [
+            1,
+            5
+          ],
+          "constraints": {
+            "sumMax": 9
+          }
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 2.4
+        },
+        "nextStageId": "G1B_ADD_NO_CARRY_SEQ_WIDE"
+      },
+      {
+        "id": "G1B_ADD_NO_CARRY_SEQ_WIDE",
+        "title": "1けた+1けた（くり上がりなし）順番",
+        "skillId": "ADD_1D_NO_CARRY",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            1,
+            9
+          ],
+          "bRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "sumMax": 9
+          }
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.6
+        },
+        "nextStageId": "G1B_ADD_NO_CARRY_RND_WIDE"
+      },
+      {
+        "id": "G1B_ADD_NO_CARRY_RND_WIDE",
+        "title": "1けた+1けた（くり上がりなし）ランダム",
+        "skillId": "ADD_1D_NO_CARRY",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            1,
+            9
+          ],
+          "bRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "sumMax": 9
+          }
+        },
+        "round": {
+          "questions": 20,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "G1B_ADD_NO_CARRY_MIX"
+      },
+      {
+        "id": "G1B_ADD_NO_CARRY_MIX",
+        "title": "1けた+1けた（くり上がりなし）混合",
+        "skillId": "ADD_1D_NO_CARRY",
+        "mode": "MIX",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            1,
+            9
+          ],
+          "bRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "sumMax": 9
+          },
+          "normalization": {
+            "commutative": true
+          }
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 2.0
+        },
+        "nextStageId": "G1E_ADD_3NUM_SEQ"
+      },
+      {
+        "id": "G1E_ADD_3NUM_SEQ",
+        "title": "3つの数（10が見える）順番",
+        "skillId": "ADD_3NUM_MAKE10",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_three_numbers",
+          "template": "make10_visible",
+          "pairs": [
+            [
+              9,
+              1
+            ],
+            [
+              8,
+              2
+            ],
+            [
+              7,
+              3
+            ],
+            [
+              6,
+              4
+            ],
+            [
+              5,
+              5
+            ]
+          ],
+          "thirdRange": [
+            1,
+            8
+          ],
+          "constraints": {
+            "sumMax": 18,
+            "fixedOrder": true
+          }
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 3.2
+        },
+        "nextStageId": "G1E_ADD_3NUM_RND"
+      },
+      {
+        "id": "G1E_ADD_3NUM_RND",
+        "title": "3つの数（10を探す）ランダム",
+        "skillId": "ADD_3NUM_MAKE10",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_three_numbers",
+          "template": "make10_find",
+          "aRange": [
+            1,
+            9
+          ],
+          "bRange": [
+            1,
+            9
+          ],
+          "cRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "mustContainMake10Pair": true,
+            "sumMax": 20
+          }
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.6
+        },
+        "nextStageId": "G1E_ADD_3NUM_MIX"
+      },
+      {
+        "id": "G1E_ADD_3NUM_MIX",
+        "title": "3つの数（総合MIX）",
+        "skillId": "ADD_3NUM_MAKE10",
+        "mode": "MIX",
+        "poolSpec": {
+          "type": "add_three_numbers",
+          "template": "mixed",
+          "aRange": [
+            1,
+            9
+          ],
+          "bRange": [
+            1,
+            9
+          ],
+          "cRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "mustContainMake10Pair": true,
+            "sumMax": 20
+          }
+        },
+        "round": {
+          "questions": 20,
+          "secPerQuestion": 2.4
+        },
+        "nextStageId": "G1C_ADD_CARRY_SPLIT_ONLY_9"
+      },
+      {
+        "id": "G1C_ADD_CARRY_SPLIT_ONLY_9",
+        "title": "くり上がり（さくらんぼ）分けるだけ 9+◯",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "variant": "split_only",
+          "aRange": [
+            9,
+            9
+          ],
+          "bRange": [
+            2,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 18
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 8,
+          "secPerQuestion": 20.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_SPLIT_ONLY_8"
+      },
+      {
+        "id": "G1C_ADD_CARRY_SPLIT_ONLY_8",
+        "title": "くり上がり（さくらんぼ）分けるだけ 8+◯",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "variant": "split_only",
+          "aRange": [
+            8,
+            8
+          ],
+          "bRange": [
+            3,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 17
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 7,
+          "secPerQuestion": 20.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_SPLIT_ONLY_7"
+      },
+      {
+        "id": "G1C_ADD_CARRY_SPLIT_ONLY_7",
+        "title": "くり上がり（さくらんぼ）分けるだけ 7+◯",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "variant": "split_only",
+          "aRange": [
+            7,
+            7
+          ],
+          "bRange": [
+            4,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 16
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 6,
+          "secPerQuestion": 20.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_SPLIT_ONLY_SMALL"
+      },
+      {
+        "id": "G1C_ADD_CARRY_SPLIT_ONLY_SMALL",
+        "title": "くり上がり（さくらんぼ）分けるだけ 6〜2+◯",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "variant": "split_only",
+          "aRange": [
+            2,
+            6
+          ],
+          "bRange": [
+            5,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 15
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 20.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_FILL_SAKURA"
+      },
+      {
+        "id": "G1C_ADD_CARRY_FILL_SAKURA",
+        "title": "くり上がり（さくらんぼ手順）穴うめ",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "FILL",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "aRange": [
+            6,
+            9
+          ],
+          "bRange": [
+            2,
+            9
+          ],
+          "constraints": {
+            "sumMin": 10,
+            "sumMax": 18
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 6.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_FULL_NO_TEN_9"
+      },
+      {
+        "id": "G1C_ADD_CARRY_FULL_NO_TEN_9",
+        "title": "くり上がり（さくらんぼ）9+◯",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "variant": "full_no_ten",
+          "aRange": [
+            9,
+            9
+          ],
+          "bRange": [
+            2,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 18
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 8,
+          "secPerQuestion": 10.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_FULL_NO_TEN_8"
+      },
+      {
+        "id": "G1C_ADD_CARRY_FULL_NO_TEN_8",
+        "title": "くり上がり（さくらんぼ）8+◯",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "variant": "full_no_ten",
+          "aRange": [
+            8,
+            8
+          ],
+          "bRange": [
+            3,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 17
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 7,
+          "secPerQuestion": 10.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_FULL_NO_TEN_7"
+      },
+      {
+        "id": "G1C_ADD_CARRY_FULL_NO_TEN_7",
+        "title": "くり上がり（さくらんぼ）7+◯",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "variant": "full_no_ten",
+          "aRange": [
+            7,
+            7
+          ],
+          "bRange": [
+            4,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 16
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 6,
+          "secPerQuestion": 10.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_FULL_NO_TEN_SMALL"
+      },
+      {
+        "id": "G1C_ADD_CARRY_FULL_NO_TEN_SMALL",
+        "title": "くり上がり（さくらんぼ）6〜2+◯",
+        "skillId": "ADD_CARRY_PROCEDURE",
+        "mode": "SEQ",
+        "poolSpec": {
+          "type": "add_carry_procedure",
+          "variant": "full_no_ten",
+          "aRange": [
+            2,
+            6
+          ],
+          "bRange": [
+            5,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 15
+          },
+          "avoid": {
+            "noCarryPairs": true
+          }
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 10.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_9_PLUS"
+      },
+      {
+        "id": "G1C_ADD_CARRY_9_PLUS",
+        "title": "くり上がり（9+◯）",
+        "skillId": "ADD_1D_CARRY",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            9,
+            9
+          ],
+          "bRange": [
+            2,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 18
+          }
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 6.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_8_PLUS"
+      },
+      {
+        "id": "G1C_ADD_CARRY_8_PLUS",
+        "title": "くり上がり（8+◯）",
+        "skillId": "ADD_1D_CARRY",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            8,
+            8
+          ],
+          "bRange": [
+            3,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 17
+          }
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 6.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_7_PLUS"
+      },
+      {
+        "id": "G1C_ADD_CARRY_7_PLUS",
+        "title": "くり上がり（7+◯）",
+        "skillId": "ADD_1D_CARRY",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            7,
+            7
+          ],
+          "bRange": [
+            4,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 16
+          }
+        },
+        "round": {
+          "questions": 12,
+          "secPerQuestion": 6.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_SMALL_PLUS"
+      },
+      {
+        "id": "G1C_ADD_CARRY_SMALL_PLUS",
+        "title": "くり上がり（6〜2+◯）まとめ",
+        "skillId": "ADD_1D_CARRY",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            2,
+            6
+          ],
+          "bRange": [
+            5,
+            9
+          ],
+          "constraints": {
+            "sumMin": 11,
+            "sumMax": 15
+          }
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 6.0,
+          "passOverride": {
+            "accuracy": 1.0,
+            "consecutivePassesRequired": 1
+          }
+        },
+        "nextStageId": "G1C_ADD_CARRY_RND_10_13"
+      },
+      {
+        "id": "G1C_ADD_CARRY_RND_10_13",
+        "title": "くり上がり（10〜13）ランダム",
+        "skillId": "ADD_1D_CARRY",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            1,
+            9
+          ],
+          "bRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "sumMin": 10,
+            "sumMax": 13
+          }
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 2.6
+        },
+        "nextStageId": "G1C_ADD_CARRY_RND_14_18"
+      },
+      {
+        "id": "G1C_ADD_CARRY_RND_14_18",
+        "title": "くり上がり（14〜18）ランダム",
+        "skillId": "ADD_1D_CARRY",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            1,
+            9
+          ],
+          "bRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "sumMin": 14,
+            "sumMax": 18
+          }
+        },
+        "round": {
+          "questions": 20,
+          "secPerQuestion": 3.0
+        },
+        "nextStageId": "G1D_ADD_CARRY_SET_36"
+      },
+      {
+        "id": "G1D_ADD_CARRY_SET_36",
+        "title": "くり上がり36（固定セット反射）",
+        "skillId": "ADD_CARRY_36SET",
+        "mode": "SET",
+        "poolSpec": {
+          "type": "fixed_set",
+          "setId": "ADD_CARRY_36",
+          "notes": "くり上がる全パターンを固定セットで反復"
+        },
+        "round": {
+          "questions": 36,
+          "secPerQuestion": 2.0
+        },
+        "nextStageId": "G1D_ADD_CARRY_RND_36"
+      },
+      {
+        "id": "G1D_ADD_CARRY_RND_36",
+        "title": "くり上がり36（ランダム）",
+        "skillId": "ADD_CARRY_36SET",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "fixed_set_random",
+          "setId": "ADD_CARRY_36"
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 1.9
+        },
+        "nextStageId": "G1D_ADD_CARRY_MIX_ALL"
+      },
+      {
+        "id": "G1D_ADD_CARRY_MIX_ALL",
+        "title": "1けた足し算（くり上がり あり/なし）総合MIX",
+        "skillId": "ADD_1D_MIX_ALL",
+        "mode": "MIX",
+        "poolSpec": {
+          "type": "add_pairs",
+          "aRange": [
+            1,
+            9
+          ],
+          "bRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "sumMin": 2,
+            "sumMax": 18
+          },
+          "normalization": {
+            "commutative": true
+          }
+        },
+        "round": {
+          "questions": 40,
+          "secPerQuestion": 1.9
+        },
+        "nextStageId": "G1F_ADD_STAIR"
+      },
+      {
+        "id": "G1F_ADD_STAIR",
+        "title": "かいだんたし算（形式練習）",
+        "skillId": "ADD_STAIR",
+        "mode": "GRID",
+        "poolSpec": {
+          "type": "stair_addition",
+          "baseNumbers": [
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ],
+          "topRowLength": 8,
+          "constraints": {
+            "sumMax": 18
+          }
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 2.2
+        },
+        "nextStageId": "G1G_ADD_2D1D_NO_CARRY"
+      },
+      {
+        "id": "G1G_ADD_2D1D_NO_CARRY",
+        "title": "2けた+1けた（くり上がりなし）",
+        "skillId": "ADD_2D1D",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_2d_1d",
+          "twoDigitRange": [
+            11,
+            19
+          ],
+          "oneDigitRange": [
+            1,
+            9
+          ],
+          "constraints": {
+            "onesNoCarry": true,
+            "sumMax": 28
+          }
+        },
+        "round": {
+          "questions": 20,
+          "secPerQuestion": 3.2
+        },
+        "nextStageId": "G1G_ADD_2D1D_CARRY_9"
+      },
+      {
+        "id": "G1G_ADD_2D1D_CARRY_9",
+        "title": "2けた+1けた（くり上がりあり）+9",
+        "skillId": "ADD_2D1D",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_2d_1d",
+          "twoDigitRange": [
+            11,
+            19
+          ],
+          "oneDigitRange": [
+            9,
+            9
+          ],
+          "constraints": {
+            "onesCarry": true,
+            "sumMax": 28
+          }
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 3.4
+        },
+        "nextStageId": "G1G_ADD_2D1D_CARRY_8"
+      },
+      {
+        "id": "G1G_ADD_2D1D_CARRY_8",
+        "title": "2けた+1けた（くり上がりあり）+8",
+        "skillId": "ADD_2D1D",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_2d_1d",
+          "twoDigitRange": [
+            11,
+            19
+          ],
+          "oneDigitRange": [
+            8,
+            8
+          ],
+          "constraints": {
+            "onesCarry": true,
+            "sumMax": 28
+          }
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 3.4
+        },
+        "nextStageId": "G1G_ADD_2D1D_CARRY_7"
+      },
+      {
+        "id": "G1G_ADD_2D1D_CARRY_7",
+        "title": "2けた+1けた（くり上がりあり）+7",
+        "skillId": "ADD_2D1D",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_2d_1d",
+          "twoDigitRange": [
+            11,
+            19
+          ],
+          "oneDigitRange": [
+            7,
+            7
+          ],
+          "constraints": {
+            "onesCarry": true,
+            "sumMax": 28
+          }
+        },
+        "round": {
+          "questions": 10,
+          "secPerQuestion": 3.4
+        },
+        "nextStageId": "G1G_ADD_2D1D_CARRY_SMALL"
+      },
+      {
+        "id": "G1G_ADD_2D1D_CARRY_SMALL",
+        "title": "2けた+1けた（くり上がりあり）+6〜+2",
+        "skillId": "ADD_2D1D",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_2d_1d",
+          "twoDigitRange": [
+            11,
+            19
+          ],
+          "oneDigitRange": [
+            2,
+            6
+          ],
+          "constraints": {
+            "onesCarry": true,
+            "sumMax": 28
+          }
+        },
+        "round": {
+          "questions": 15,
+          "secPerQuestion": 3.4
+        },
+        "nextStageId": "G1G_ADD_2D1D_CARRY_ALL"
+      },
+      {
+        "id": "G1G_ADD_2D1D_CARRY_ALL",
+        "title": "2けた+1けた（くり上がりあり）まとめ",
+        "skillId": "ADD_2D1D",
+        "mode": "RND",
+        "poolSpec": {
+          "type": "add_2d_1d",
+          "twoDigitRange": [
+            11,
+            19
+          ],
+          "oneDigitRange": [
+            2,
+            9
+          ],
+          "constraints": {
+            "onesCarry": true,
+            "sumMax": 28
+          }
+        },
+        "round": {
+          "questions": 24,
+          "secPerQuestion": 3.4
+        },
+        "nextStageId": "G1H_ADD_1D2D_MIX"
+      },
+      {
+        "id": "G1H_ADD_1D2D_MIX",
+        "title": "1けた+2けた（交換法則：総合MIX）",
+        "skillId": "ADD_1D2D",
+        "mode": "MIX",
+        "poolSpec": {
+          "type": "add_1d_2d",
+          "oneDigitRange": [
+            1,
+            9
+          ],
+          "twoDigitRange": [
+            11,
+            19
+          ],
+          "constraints": {
+            "sumMax": 28
+          },
+          "normalization": {
+            "commutative": true
+          }
+        },
+        "round": {
+          "questions": 30,
+          "secPerQuestion": 3.0
+        },
+        "nextStageId": null,
+        "onComplete": {
+          "unlockTracks": [
+            "ES_G1_SUB"
+          ],
+          "message": "小1の足し算（計算力）クリア！次は引き算へ。"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,406 @@
+{
+    "version": "1.0.0",
+    "domain": "math",
+    "track": "ES_G1_SUB",
+    "title": "小1ひき算（1けた・くり下がり）",
+    "globalRules": {
+        "pass": {
+            "accuracy": 0.9,
+            "mustFinishWithinTime": true,
+            "consecutivePassesRequired": 1
+        },
+        "round": {
+            "defaultQuestionsPerRound": 10,
+            "maxSameItemStreak": 2
+        },
+        "weakInjection": {
+            "enabled": true,
+            "injectRatio": 0.3,
+            "minInjectedPerRound": 2,
+            "maxInjectedPerRound": 4,
+            "promoteToWeakMiniStageAfterSameMistakeCount": 2
+        },
+        "timing": {
+            "mode": "fixed_sec_per_question",
+            "ui": {
+                "showCountdown": true,
+                "showPaceBar": true
+            }
+        }
+    },
+    "stageGraph": {
+        "startStageId": "G1S_SUB_10",
+        "stages": [
+            {
+                "id": "G1S_SUB_10",
+                "title": "10のひき算（反射）",
+                "skillId": "SUB_10",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        10,
+                        10
+                    ],
+                    "subtrahendRange": [
+                        1,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 15,
+                    "secPerQuestion": 2.0
+                },
+                "nextStageId": "G1S_SUB_1D1D"
+            },
+            {
+                "id": "G1S_SUB_1D1D",
+                "title": "1けた-1けた（基本）",
+                "skillId": "SUB_1D1D",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        2,
+                        9
+                    ],
+                    "subtrahendRange": [
+                        1,
+                        9
+                    ],
+                    "constraints": {
+                        "resultMin": 0
+                    }
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_2D1D_EASY"
+            },
+            {
+                "id": "G1S_SUB_2D1D_EASY",
+                "title": "2けた-1けた（くり下がりなし）",
+                "skillId": "SUB_2D1D",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "sub_2d_1d",
+                    "twoDigitRange": [
+                        11,
+                        19
+                    ],
+                    "oneDigitRange": [
+                        1,
+                        9
+                    ],
+                    "constraints": {
+                        "noBorrow": true
+                    }
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 4.0
+                },
+                "nextStageId": "G1S_SUB_THREE_NUM"
+            },
+            {
+                "id": "G1S_SUB_THREE_NUM",
+                "title": "3つの数の計算（10-a+b）",
+                "skillId": "SUB_ADD_MIXED",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "sub_add_mixed",
+                    "base": 10,
+                    "subtrahendRange": [
+                        2,
+                        9
+                    ],
+                    "addendRange": [
+                        1,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 4.0
+                },
+                "nextStageId": "G1S_SUB_10_PLUS"
+            },
+            {
+                "id": "G1S_SUB_10_PLUS",
+                "title": "くり下がり手順（減加法：10-a+b）",
+                "skillId": "SUB_BORROW_PROCEDURE",
+                "mode": "FILL",
+                "poolSpec": {
+                    "type": "sub_borrow_procedure",
+                    "variant": "full",
+                    "minuendRange": [
+                        11,
+                        18
+                    ],
+                    "subtrahendRange": [
+                        2,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 10,
+                    "secPerQuestion": 15.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_FILL"
+            },
+            {
+                "id": "G1S_SUB_BORROW_FILL",
+                "title": "くり下がり手順（さくらんぼ穴うめ）",
+                "skillId": "SUB_BORROW_PROCEDURE",
+                "mode": "FILL",
+                "poolSpec": {
+                    "type": "sub_borrow_procedure",
+                    "variant": "fill",
+                    "minuendRange": [
+                        11,
+                        18
+                    ],
+                    "subtrahendRange": [
+                        2,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 10,
+                    "secPerQuestion": 15.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_11"
+            },
+            {
+                "id": "G1S_SUB_BORROW_11",
+                "title": "11 - ◯（くり下がり）",
+                "skillId": "SUB_BORROW_SET",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        11,
+                        11
+                    ],
+                    "subtrahendRange": [
+                        2,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 8,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_12"
+            },
+            {
+                "id": "G1S_SUB_BORROW_12",
+                "title": "12 - ◯（くり下がり）",
+                "skillId": "SUB_BORROW_SET",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        12,
+                        12
+                    ],
+                    "subtrahendRange": [
+                        3,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 7,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_13"
+            },
+            {
+                "id": "G1S_SUB_BORROW_13",
+                "title": "13 - ◯（くり下がり）",
+                "skillId": "SUB_BORROW_SET",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        13,
+                        13
+                    ],
+                    "subtrahendRange": [
+                        4,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 6,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_14"
+            },
+            {
+                "id": "G1S_SUB_BORROW_14",
+                "title": "14 - ◯（くり下がり）",
+                "skillId": "SUB_BORROW_SET",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        14,
+                        14
+                    ],
+                    "subtrahendRange": [
+                        5,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 5,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_15"
+            },
+            {
+                "id": "G1S_SUB_BORROW_15",
+                "title": "15 - ◯（くり下がり）",
+                "skillId": "SUB_BORROW_SET",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        15,
+                        15
+                    ],
+                    "subtrahendRange": [
+                        6,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 4,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_16"
+            },
+            {
+                "id": "G1S_SUB_BORROW_16",
+                "title": "16 - ◯（くり下がり）",
+                "skillId": "SUB_BORROW_SET",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        16,
+                        16
+                    ],
+                    "subtrahendRange": [
+                        7,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 3,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_17"
+            },
+            {
+                "id": "G1S_SUB_BORROW_17",
+                "title": "17 - ◯（くり下がり）",
+                "skillId": "SUB_BORROW_SET",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        17,
+                        17
+                    ],
+                    "subtrahendRange": [
+                        8,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 2,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_BORROW_18"
+            },
+            {
+                "id": "G1S_SUB_BORROW_18",
+                "title": "18 - ◯（くり下がり）",
+                "skillId": "SUB_BORROW_SET",
+                "mode": "SEQ",
+                "poolSpec": {
+                    "type": "sub_pairs",
+                    "minuendRange": [
+                        18,
+                        18
+                    ],
+                    "subtrahendRange": [
+                        9,
+                        9
+                    ]
+                },
+                "round": {
+                    "questions": 1,
+                    "secPerQuestion": 3.0
+                },
+                "nextStageId": "G1S_SUB_STAIR"
+            },
+            {
+                "id": "G1S_SUB_STAIR",
+                "title": "かいだんひき算",
+                "skillId": "SUB_STAIR",
+                "mode": "GRID",
+                "poolSpec": {
+                    "type": "sub_stair",
+                    "baseNumbers": [
+                        2,
+                        3,
+                        4,
+                        5,
+                        6,
+                        7,
+                        8,
+                        9
+                    ],
+                    "topRowLength": 8
+                },
+                "round": {
+                    "questions": 24,
+                    "secPerQuestion": 2.5
+                },
+                "nextStageId": "G1S_SUB_2D1D"
+            },
+            {
+                "id": "G1S_SUB_2D1D",
+                "title": "2けた-1けた（くり下がりあり）",
+                "skillId": "SUB_2D1D_BORROW",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "sub_2d_1d",
+                    "twoDigitRange": [
+                        11,
+                        18
+                    ],
+                    "oneDigitRange": [
+                        2,
+                        9
+                    ],
+                    "constraints": {
+                        "borrow": true
+                    }
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 5.0
+                },
+                "nextStageId": null,
+                "onComplete": {
+                    "message": "小1の引き算（くり下がり基礎）クリア！"
+                }
+            }
+        ]
+    }
+}
