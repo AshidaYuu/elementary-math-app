@@ -192,7 +192,7 @@ const WrittenCalcInput = forwardRef<WrittenCalcInputRef, WrittenCalcInputProps>(
             {/* Instruction */}
             <div className="mb-6 text-slate-500 font-bold text-center h-8">
                 {activeCol === 0 && !submitted && "一の位を計算しよう"}
-                {(activeCol === 'c0' || activeCol === 'c1') && !submitted && "くり上がりをタップしよう"}
+                {((activeCol === 0 && hasCarryToTens && !carryMarks[0]) || (activeCol === 1 && hasCarryToHundreds && !carryMarks[1])) && !submitted && "くり上がりをタップしよう"}
                 {activeCol === 1 && !submitted && "十の位を計算しよう"}
                 {activeCol === 2 && !submitted && "百の位を計算しよう"}
                 {submitted && isCorrect && "正解！"}
