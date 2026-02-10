@@ -188,9 +188,9 @@ const WrittenCalcInput = forwardRef<WrittenCalcInputRef, WrittenCalcInputProps>(
     };
 
     return (
-        <div className="flex flex-col items-center w-full max-w-xs mx-auto px-4 select-none">
+        <div className="flex flex-col items-center w-full max-w-[280px] mx-auto px-2 select-none">
             {/* Instruction */}
-            <div className="mb-6 text-slate-500 font-bold text-center h-8">
+            <div className="mb-2 text-slate-500 font-bold text-center min-h-[1.5rem] text-sm">
                 {activeCol === 0 && !submitted && "一の位を計算しよう"}
                 {((activeCol === 0 && hasCarryToTens && !carryMarks[0]) || (activeCol === 1 && hasCarryToHundreds && !carryMarks[1])) && !submitted && "くり上がりをタップしよう"}
                 {activeCol === 1 && !submitted && "十の位を計算しよう"}
@@ -201,7 +201,7 @@ const WrittenCalcInput = forwardRef<WrittenCalcInputRef, WrittenCalcInputProps>(
 
             {/* Calculation Grid */}
             <div className={`
-                flex flex-col items-end text-6xl font-black font-mono leading-none tracking-widest relative
+                flex flex-col items-end text-5xl font-black font-mono leading-none tracking-widest relative
                 transition-transform duration-100 ${shake ? 'translate-x-[4px]' : ''} ${shake ? 'translate-x-[-4px]' : ''}
             `}>
                 {/* Grid Guides */}
@@ -212,15 +212,15 @@ const WrittenCalcInput = forwardRef<WrittenCalcInputRef, WrittenCalcInputProps>(
                 </div>
 
                 {/* Carry Marks Row (Above Top Number) */}
-                <div className="flex justify-end gap-2 mb-1 w-full pr-2 relative z-10 h-8">
+                <div className="flex justify-end gap-1 mb-0 w-full pr-1 relative z-10 h-6">
                     {/* Tens Carry (affects hundreds place) - index 1 of carryMarks means carry TO hundreds */}
 
                     {/* Carry to Hundreds (Display above Hundreds, visual col 0) */}
-                    <div className="w-16 flex justify-center items-end">
+                    <div className="w-14 flex justify-center items-end">
                         {/* Only meaningful if we have 3 digits answer */}
                         <div
                             className={`
-                                w-8 h-8 rounded-full flex items-center justify-center text-sm border-2 cursor-pointer transition-colors
+                                w-6 h-6 rounded-full flex items-center justify-center text-xs border-2 cursor-pointer transition-colors
                                 ${carryMarks[1] ? 'bg-blue-100 border-blue-400 text-blue-600 font-bold' : 'border-slate-200 text-transparent hover:border-slate-300'}
                                 ${activeCol === 1 && hasCarryToHundreds && !carryMarks[1] && inputs[1] !== '' ? 'animate-bounce ring-2 ring-orange-400 border-orange-400' : ''}
                             `}
@@ -231,10 +231,10 @@ const WrittenCalcInput = forwardRef<WrittenCalcInputRef, WrittenCalcInputProps>(
                     </div>
 
                     {/* Carry to Tens (Display above Tens, visual col 1) */}
-                    <div className="w-16 flex justify-center items-end">
+                    <div className="w-14 flex justify-center items-end">
                         <div
                             className={`
-                                w-8 h-8 rounded-full flex items-center justify-center text-sm border-2 cursor-pointer transition-colors
+                                w-6 h-6 rounded-full flex items-center justify-center text-xs border-2 cursor-pointer transition-colors
                                 ${carryMarks[0] ? 'bg-blue-100 border-blue-400 text-blue-600 font-bold' : 'border-slate-200 text-transparent hover:border-slate-300'}
                                 ${activeCol === 0 && hasCarryToTens && !carryMarks[0] && inputs[0] !== '' ? 'animate-bounce ring-2 ring-orange-400 border-orange-400' : ''}
                             `}
@@ -245,54 +245,54 @@ const WrittenCalcInput = forwardRef<WrittenCalcInputRef, WrittenCalcInputProps>(
                     </div>
 
                     {/* Ones place (No carry above it) */}
-                    <div className="w-16"></div>
+                    <div className="w-14"></div>
                 </div>
 
                 {/* Top Number */}
-                <div className="flex justify-end gap-2 mb-2 w-full pr-2 relative z-10">
+                <div className="flex justify-end gap-1 mb-1 w-full pr-1 relative z-10">
                     {/* Hundreds */}
-                    <div className="w-16 text-center text-slate-700">
+                    <div className="w-14 text-center text-slate-700">
                         {getDigit(strA, 2)}
                     </div>
                     {/* Tens */}
-                    <div className="w-16 text-center text-slate-700">
+                    <div className="w-14 text-center text-slate-700">
                         {getDigit(strA, 1)}
                     </div>
                     {/* Ones */}
-                    <div className="w-16 text-center text-slate-700">
+                    <div className="w-14 text-center text-slate-700">
                         {getDigit(strA, 0)}
                     </div>
                 </div>
 
                 {/* Bottom Row (+ and Number) */}
-                <div className="flex justify-end gap-2 mb-2 w-full pr-2 relative z-10">
-                    <span className="absolute left-[-1.5rem] bottom-2 text-4xl text-slate-400 font-normal">
+                <div className="flex justify-end gap-1 mb-1 w-full pr-1 relative z-10">
+                    <span className="absolute left-[-1.0rem] bottom-1 text-3xl text-slate-400 font-normal">
                         {metadata?.operator || '+'}
                     </span>
 
                     {/* Hundreds */}
-                    <div className="w-16 text-center text-slate-700">
+                    <div className="w-14 text-center text-slate-700">
                         {getDigit(strB, 2)}
                     </div>
                     {/* Tens */}
-                    <div className="w-16 text-center text-slate-700">
+                    <div className="w-14 text-center text-slate-700">
                         {getDigit(strB, 1)}
                     </div>
                     {/* Ones */}
-                    <div className="w-16 text-center text-slate-700">
+                    <div className="w-14 text-center text-slate-700">
                         {getDigit(strB, 0)}
                     </div>
                 </div>
 
                 {/* Line */}
-                <div className="w-full border-b-4 border-slate-800 mb-2 z-10"></div>
+                <div className="w-full border-b-4 border-slate-800 mb-1 z-10"></div>
 
                 {/* Answer Inputs */}
-                <div className="flex justify-end gap-2 w-full pr-2 relative z-10">
+                <div className="flex justify-end gap-1 w-full pr-1 relative z-10">
                     {/* Hundreds (index 2) */}
                     <div
                         className={`
-                            w-16 h-20 rounded-lg flex items-center justify-center text-5xl font-black
+                            w-14 h-16 rounded-lg flex items-center justify-center text-4xl font-black
                             ${activeCol === 2 && !submitted ? 'bg-blue-100 ring-4 ring-blue-400' : 'bg-transparent'}
                             ${submitted && inputs[2] === getDigit(strAnswer, 2) ? 'text-green-600' : ''}
                             ${submitted && inputs[2] !== getDigit(strAnswer, 2) && getDigit(strAnswer, 2) !== '' ? 'text-red-500 bg-red-50' : ''}
@@ -305,7 +305,7 @@ const WrittenCalcInput = forwardRef<WrittenCalcInputRef, WrittenCalcInputProps>(
                     {/* Tens (index 1) */}
                     <div
                         className={`
-                            w-16 h-20 rounded-lg flex items-center justify-center text-5xl font-black
+                            w-14 h-16 rounded-lg flex items-center justify-center text-4xl font-black
                             ${activeCol === 1 && !submitted ? 'bg-blue-100 ring-4 ring-blue-400' : 'bg-transparent'}
                             ${submitted && inputs[1] === getDigit(strAnswer, 1) ? 'text-green-600' : ''}
                             ${submitted && inputs[1] !== getDigit(strAnswer, 1) ? 'text-red-500 bg-red-50' : ''}
@@ -318,7 +318,7 @@ const WrittenCalcInput = forwardRef<WrittenCalcInputRef, WrittenCalcInputProps>(
                     {/* Ones (index 0) */}
                     <div
                         className={`
-                            w-16 h-20 rounded-lg flex items-center justify-center text-5xl font-black
+                            w-14 h-16 rounded-lg flex items-center justify-center text-4xl font-black
                             ${activeCol === 0 && !submitted ? 'bg-blue-100 ring-4 ring-blue-400' : 'bg-transparent'}
                             ${submitted && inputs[0] === getDigit(strAnswer, 0) ? 'text-green-600' : ''}
                             ${submitted && inputs[0] !== getDigit(strAnswer, 0) ? 'text-red-500 bg-red-50' : ''}

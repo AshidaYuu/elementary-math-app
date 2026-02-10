@@ -41,7 +41,7 @@ export function NumberPad({ onInput, disabled }: NumberPadProps) {
                                 : "bg-white text-slate-700 active:bg-slate-50 border border-slate-100"
                         }
             ${disabled ? "opacity-50 cursor-not-allowed" : "hover:brightness-95"}
-            h-12
+            h-10
           `}
                 >
                     {btn.label}

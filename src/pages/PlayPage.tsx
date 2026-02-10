@@ -536,7 +536,7 @@ export default function PlayPage() {
     }
 
     return (
-        <div className="h-screen flex flex-col bg-slate-50 overflow-hidden relative">
+        <div className="h-[100dvh] flex flex-col bg-slate-50 overflow-hidden relative">
             {/* Phase Transition Overlay */}
             {showPhaseTransition && (
                 <div className="absolute inset-0 z-50 flex items-center justify-center bg-blue-500/90 backdrop-blur-sm transition-all duration-300">
@@ -549,7 +549,7 @@ export default function PlayPage() {
             )}
 
             {/* Header / Timer */}
-            <div className="flex justify-between items-center px-4 py-2">
+            <div className="flex justify-between items-center px-4 py-1">
                 <button onClick={() => navigate('/')} className="text-slate-400 font-bold w-8">✕</button>
 
                 {/* Phase Badge */}
@@ -577,7 +577,7 @@ export default function PlayPage() {
                 </div>
             </div>
 
-            <div className="flex-1 flex flex-col items-center justify-center relative w-full max-w-md mx-auto overflow-y-auto min-h-0">
+            <div className="flex-1 flex flex-col items-center justify-start pt-6 pb-64 relative w-full max-w-md mx-auto overflow-y-auto min-h-0">
 
                 {/* Modular Question Visual */}
                 {(currentQ.metadata?.poolType === 'place_value_2d' || currentQ.metadata?.poolType === 'place_value_3d') ? (
@@ -890,7 +890,7 @@ export default function PlayPage() {
 
             {/* NumberPad - hide for skip_tap */}
             {currentQ?.metadata?.poolType !== 'skip_tap' && (
-                <div className={`bg-white rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)] pb-4 pt-2 transition-all duration-300 ${inputReady ? 'translate-y-0' : 'translate-y-full'}`}>
+                <div className={`absolute bottom-0 left-0 w-full z-20 bg-white rounded-t-3xl shadow-[0_-4px_20px_rgba(0,0,0,0.1)] pb-6 pt-2 transition-all duration-300 ${inputReady ? 'translate-y-0' : 'translate-y-full'}`}>
                     <NumberPad onInput={handleInput} />
                 </div>
             )}

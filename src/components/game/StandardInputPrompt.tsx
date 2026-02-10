@@ -32,10 +32,10 @@ export function StandardInputPrompt({ question, currentInput, feedback }: Standa
     }
 
     return (
-        <div className="flex flex-col items-center justify-center mb-8 animate-in slide-in-from-right duration-300">
+        <div className="flex flex-col items-center justify-center mb-2 animate-in slide-in-from-right duration-300">
             {/* 九九読み方 - 掛け算の場合は常に表示 */}
             {equationReading && (
-                <div className="text-2xl font-bold text-purple-500 mb-3">
+                <div className="text-xl font-bold text-purple-500 mb-1">
                     <span>{equationReading}</span>
                     {feedback && answerReading && (
                         <span className="text-green-500 animate-in fade-in zoom-in duration-300">{answerReading}</span>
@@ -43,13 +43,13 @@ export function StandardInputPrompt({ question, currentInput, feedback }: Standa
                 </div>
             )}
 
-            <div className="flex items-center justify-center space-x-3">
-                <div className="text-5xl font-black text-slate-800 leading-none">
+            <div className="flex items-center justify-center space-x-2">
+                <div className="text-4xl font-black text-slate-800 leading-none">
                     {expression}
                 </div>
-                <div className="text-3xl text-slate-300 font-bold">=</div>
-                <div className="min-w-[60px] h-[60px] border-b-2 border-blue-200 flex items-center justify-center relative">
-                    <span className={`text-5xl font-bold animate-in zoom-in duration-100 leading-tight ${feedback === 'correct' ? 'text-green-500' :
+                <div className="text-2xl text-slate-300 font-bold">=</div>
+                <div className="min-w-[50px] h-[50px] border-b-2 border-blue-200 flex items-center justify-center relative">
+                    <span className={`text-4xl font-bold animate-in zoom-in duration-100 leading-tight ${feedback === 'correct' ? 'text-green-500' :
                         feedback === 'incorrect' ? 'text-red-500' :
                             'text-blue-600'
                         }`}>

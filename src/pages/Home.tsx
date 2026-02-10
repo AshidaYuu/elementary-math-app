@@ -13,7 +13,7 @@ export default function Home() {
     }, []);
 
     if (!mounted || loading) {
-        return <div className="min-h-screen flex items-center justify-center bg-blue-50 text-blue-800">読み込み中...</div>;
+        return <div className="min-h-[100dvh] flex items-center justify-center bg-blue-50 text-blue-800">読み込み中...</div>;
     }
 
     // Determine resume target
@@ -21,7 +21,7 @@ export default function Home() {
     const resumeLink = currentStageId ? `/play/${currentStageId}` : "/stages";
 
     return (
-        <main className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-blue-100 to-white px-4">
+        <main className="min-h-[100dvh] flex flex-col items-center justify-center bg-gradient-to-b from-blue-100 to-white px-4">
             <div className="w-full max-w-md space-y-8 text-center">
                 <h1 className="text-4xl font-black tracking-tight text-blue-600 sm:text-6xl drop-shadow-sm">
                     {curriculum?.title || "CalcStages"}
