@@ -28,7 +28,9 @@ export type PoolType =
   | 'written_form_fill'
   | 'written_form_choice'
   | 'written_add_2d2d'
+  | 'written_add'
   | 'carry_mark_tap'
+  | 'mental_add_step'
   | 'written_verify';
 
 export interface BasePoolSpec {
@@ -142,7 +144,9 @@ export type PoolSpec =
   | WrittenFormFillPool
   | WrittenFormChoicePool
   | WrittenAdd2D2DPool
+  | WrittenAddPool
   | CarryMarkTapPool
+  | MentalAddStepPool
   | WrittenVerifyPool;
 
 export interface SubPairsPool extends BasePoolSpec {
@@ -414,6 +418,15 @@ export interface WrittenAdd2D2DPool extends BasePoolSpec {
   inputOrder?: 'ones_first'; // 一の位から入力
 }
 
+export interface WrittenAddPool extends BasePoolSpec {
+  type: 'written_add';
+  aRange: [number, number];
+  bRange: [number, number];
+  carryRequired?: boolean;
+  noCarry?: boolean;
+  inputOrder?: 'ones_first';
+}
+
 // 繰り上がりマーク練習
 export interface CarryMarkTapPool extends BasePoolSpec {
   type: 'carry_mark_tap';
@@ -428,4 +441,12 @@ export interface WrittenVerifyPool extends BasePoolSpec {
   aRange: [number, number];
   bRange: [number, number];
   verifyType: 'subtract_a' | 'subtract_b' | 'random'; // 検算の引く対象
+}
+
+// 暗算ステップ（手順理解）
+export interface MentalAddStepPool extends BasePoolSpec {
+  type: 'mental_add_step';
+  aRange: [number, number];
+  bRange: [number, number];
+  stepType?: 'tens_then_ones';
 }

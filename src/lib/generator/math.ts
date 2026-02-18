@@ -698,7 +698,7 @@ export function generateSkipTap(spec: SkipTapPool, count: number): Question[] {
 // Written Calculation (筆算) Generators
 // ============================================
 
-import { PlaceValue2DPool, PlaceValue3DPool, WrittenFormFillPool, WrittenFormChoicePool, WrittenAdd2D2DPool, CarryMarkTapPool, WrittenVerifyPool } from "@/types/curriculum";
+import { PlaceValue2DPool, PlaceValue3DPool, WrittenFormFillPool, WrittenFormChoicePool, WrittenAdd2D2DPool, WrittenAddPool, CarryMarkTapPool, MentalAddStepPool, WrittenVerifyPool } from "@/types/curriculum";
 
 // 21. 位取りトレーニング（2桁）
 // 数字を「十の位」「一の位」に分解する
@@ -911,6 +911,117 @@ export function generateWrittenAdd2D2D(spec: WrittenAdd2D2DPool, count: number):
                 answerTens: Math.floor((sum % 100) / 10),
                 answerHundreds: sum >= 100 ? Math.floor(sum / 100) : null,
                 inputOrder: spec.inputOrder || 'ones_first'
+            }
+        });
+    }
+
+
+    return questions;
+}
+
+export function generateWrittenAdd(spec: WrittenAddPool, count: number): Question[] {
+    const questions: Question[] = [];
+    let attempts = 0;
+
+    while (questions.length < count && attempts < count * 20) {
+        attempts++;
+        const a = randomInt(spec.aRange[0], spec.aRange[1]);
+        const b = randomInt(spec.bRange[0], spec.bRange[1]);
+        const sum = a + b;
+
+        // Calculate carries for constraints
+        const aOnes = a % 10;
+        const bOnes = b % 10;
+        const onesSum = aOnes + bOnes;
+        const carryToTens = onesSum >= 10;
+
+        const aTens = Math.floor((a % 100) / 10);
+        const bTens = Math.floor((b % 100) / 10);
+        const tensSum = aTens + bTens + (carryToTens ? 1 : 0);
+        const carryToHundreds = tensSum >= 10;
+
+        const hasAnyCarry = carryToTens || carryToHundreds;
+
+        // 繰り上がり制約のチェック
+        if (spec.carryRequired && !hasAnyCarry) continue;
+
+        // 繰り上がりなし（noCarry）の場合: 全ての桁で繰り上がり禁止
+        if (spec.noCarry && hasAnyCarry) continue;
+
+        questions.push({
+            id: `wa_gen_${a}_${b}_${questions.length}_${Date.now()}`,
+            text: `${a} + ${b}`,
+            answer: sum.toString(),
+            type: 'written_add',
+            metadata: {
+                poolType: 'written_add',
+                a: a,
+                b: b,
+                sum: sum,
+                hasCarryToTens: carryToTens,
+                hasCarryToHundreds: carryToHundreds,
+                inputOrder: spec.inputOrder || 'ones_first'
+            }
+        });
+    }
+
+
+    return questions;
+}
+
+export function generateMentalAddStep(spec: MentalAddStepPool, count: number): Question[] {
+    const questions: Question[] = [];
+    let attempts = 0;
+
+    while (questions.length < count && attempts < count * 20) {
+        attempts++;
+        const a = randomInt(spec.aRange[0], spec.aRange[1]);
+        const b = randomInt(spec.bRange[0], spec.bRange[1]);
+        const sum = a + b;
+
+        const onesSum = (a % 10) + (b % 10);
+
+        // Constraints check
+        if (spec.constraints?.noCarry && onesSum >= 10) continue;
+        if (spec.constraints?.carry && onesSum < 10) continue;
+
+        // Default behavior if no constraints specified: Force carry for "Step" training, 
+        // but allow random if generic. 
+        // If it's the "Prep" stage (noCarry), we specifically want no carry.
+        // If it's "Step" stage (Carry trick), we want carry.
+        // Let's assume if no constraint is separate, we default to carry for backward compatibility 
+        // (though we just made it).
+        // Better: Check if pool spec has explicit "noCarry" logic.
+
+        // For safe implementation:
+        // If spec says noCarry, skip if carry.
+        // If spec doesn't say noCarry, but we are in "Mental Step" context which implies carry trick,
+        // we usually want carry. But if we use this for "Prep", we want no carry.
+        // The spec passed to this function is MentalAddStepPool.
+
+        // Let's rely on `constraints`.
+        if (!spec.constraints?.noCarry && onesSum < 10) {
+            // For the original "Mental Step" (carry trick), we want carry.
+            // If we reuse this for prep, we will set noCarry=true.
+            // So if NO 'noCarry' constraint is set, we assume we WANT carry (or at least don't mind it).
+            // But existing code forced carry. Let's keep forcing carry unless noCarry is set.
+            continue;
+        }
+
+        questions.push({
+            id: `mental_step_${a}_${b}_${questions.length}_${Date.now()}`,
+            text: `${a} + ${b}`,
+            answer: sum.toString(), // Final answer, but UI handles steps
+            type: 'mental_add_step',
+            metadata: {
+                poolType: 'mental_add_step',
+                a: a,
+                b: b,
+                sum: sum,
+                tensPart: Math.floor(sum / 10), // Answer's tens digit (e.g. 2 in 21)
+                onesPart: sum % 10,             // Answer's ones digit (e.g. 1 in 21)
+                stepType: spec.stepType || 'tens_then_ones',
+                hasCarry: onesSum >= 10
             }
         });
     }

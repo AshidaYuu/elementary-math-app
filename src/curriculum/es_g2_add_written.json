@@ -188,29 +188,6 @@
                     "questions": 20,
                     "secPerQuestion": 12.0
                 },
-                "nextStageId": "G2W_CARRY_MARK"
-            },
-            {
-                "id": "G2W_CARRY_MARK",
-                "title": "くり上がりマーク練習",
-                "skillId": "CARRY_MARK",
-                "mode": "RND",
-                "poolSpec": {
-                    "type": "carry_mark_tap",
-                    "aRange": [
-                        10,
-                        89
-                    ],
-                    "bRange": [
-                        10,
-                        89
-                    ],
-                    "carryRatio": 0.5
-                },
-                "round": {
-                    "questions": 20,
-                    "secPerQuestion": 5.0
-                },
                 "nextStageId": "G2W_2D2D_MIX"
             },
             {
@@ -233,29 +210,6 @@
                 "round": {
                     "questions": 30,
                     "secPerQuestion": 10.0
-                },
-                "nextStageId": "G2W_VERIFY"
-            },
-            {
-                "id": "G2W_VERIFY",
-                "title": "筆算たし算（検算）",
-                "skillId": "WRITTEN_VERIFY",
-                "mode": "FILL",
-                "poolSpec": {
-                    "type": "written_verify",
-                    "aRange": [
-                        10,
-                        89
-                    ],
-                    "bRange": [
-                        10,
-                        89
-                    ],
-                    "verifyType": "random"
-                },
-                "round": {
-                    "questions": 12,
-                    "secPerQuestion": 15.0
                 },
                 "nextStageId": "G2W_REVIEW_GATE"
             },
@@ -280,10 +234,79 @@
                     "questions": 30,
                     "secPerQuestion": 8.0
                 },
-                "nextStageId": null,
-                "onComplete": {
-                    "message": "小2 筆算たし算クリア！"
-                }
+                "nextStageId": "G2W_3D2D_NO_CARRY"
+            },
+            {
+                "id": "G2W_3D2D_NO_CARRY",
+                "title": "3けた+2けた（くり上がりなし）",
+                "skillId": "WRITTEN_ADD_3D2D_NO_CARRY",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "written_add",
+                    "aRange": [
+                        100,
+                        899
+                    ],
+                    "bRange": [
+                        10,
+                        99
+                    ],
+                    "noCarry": true,
+                    "inputOrder": "ones_first"
+                },
+                "round": {
+                    "questions": 15,
+                    "secPerQuestion": 12.0
+                },
+                "nextStageId": "G2W_3D2D_CARRY"
+            },
+            {
+                "id": "G2W_3D2D_CARRY",
+                "title": "3けた+2けた（くり上がりあり）",
+                "skillId": "WRITTEN_ADD_3D2D_CARRY",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "written_add",
+                    "aRange": [
+                        100,
+                        899
+                    ],
+                    "bRange": [
+                        10,
+                        99
+                    ],
+                    "carryRequired": true,
+                    "inputOrder": "ones_first"
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 15.0
+                },
+                "nextStageId": "G2W_3D3D_CARRY"
+            },
+            {
+                "id": "G2W_3D3D_CARRY",
+                "title": "3けた+3けた（くり上がりあり）",
+                "skillId": "WRITTEN_ADD_3D3D_CARRY",
+                "mode": "RND",
+                "poolSpec": {
+                    "type": "written_add",
+                    "aRange": [
+                        100,
+                        899
+                    ],
+                    "bRange": [
+                        100,
+                        899
+                    ],
+                    "carryRequired": true,
+                    "inputOrder": "ones_first"
+                },
+                "round": {
+                    "questions": 20,
+                    "secPerQuestion": 20.0
+                },
+                "nextStageId": null
             }
         ]
     }

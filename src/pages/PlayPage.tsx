@@ -306,7 +306,7 @@ export default function PlayPage() {
         }
 
         // Route to WrittenCalcInput handler
-        if (currentQ.metadata?.poolType === 'written_add_2d2d' || currentQ.metadata?.poolType === 'written_verify') {
+        if (currentQ.metadata?.poolType === 'written_add_2d2d' || currentQ.metadata?.poolType === 'written_add' || currentQ.metadata?.poolType === 'written_verify') {
             writtenCalcInputRef.current?.handleInput(val);
             return;
         }
@@ -419,8 +419,14 @@ export default function PlayPage() {
             const stage = curriculum.stageGraph.stages.find(s => s.id === stageId);
             if (stage) {
                 const correctCount = finalResults.filter(r => r.correct).length;
-                const accuracy = Math.round((correctCount / finalResults.length) * 100) || 0;
-                const isPassed = accuracy >= (curriculum.globalRules.pass.accuracy || 0);
+                const mistakeCount = finalResults.filter(r => !r.correct).length;
+
+                // Use questions.length for total count to calculate accuracy correctly even if failed early
+                const accuracy = Math.round((correctCount / questions.length) * 100) || 0;
+
+                // Pass condition: Meets accuracy AND mistakes < 2
+                const isPassed = (accuracy >= (curriculum.globalRules.pass.accuracy || 0)) && (mistakeCount < 2);
+
                 const totalTime = finalResults.reduce((acc, r) => acc + r.time, 0);
 
                 const newMistakesProp: WeakQuestion[] = finalResults
@@ -469,24 +475,58 @@ export default function PlayPage() {
     if (status === 'finished') {
         // Calc Accuracy
         const correctCount = results.filter(r => r.correct).length;
-        const accuracy = Math.round((correctCount / results.length) * 100) || 0;
-        // Use global rule for accuracy requirement
-        const isPassed = accuracy >= (curriculum.globalRules.pass.accuracy || 0);
+        const mistakeCount = results.filter(r => !r.correct).length;
+
+        // Use questions.length for total count
+        const accuracy = Math.round((correctCount / questions.length) * 100) || 0;
+
+        // Use global rule for accuracy requirement AND check mistake count
+        const isPassed = (accuracy >= (curriculum.globalRules.pass.accuracy || 0)) && (mistakeCount < 2);
+
+        // Find next stage
+        const currentStageIndex = curriculum.stageGraph.stages.findIndex(s => s.id === stageId);
+        const nextStage = (currentStageIndex >= 0 && currentStageIndex < curriculum.stageGraph.stages.length - 1)
+            ? curriculum.stageGraph.stages[currentStageIndex + 1]
+            : null;
 
         return (
             <div className="h-screen flex flex-col items-center justify-center bg-slate-50 p-4">
-                <h1 className="text-4xl font-black text-slate-800 mb-8">
-                    Result: {correctCount} / {results.length}
-                </h1>
-                <div className="text-6xl font-black mb-12 animate-bounce">
-                    {isPassed ? '🎉 CLEAR!' : '💪 Fight!'}
+                <div className="bg-white rounded-3xl p-8 shadow-xl max-w-lg w-full text-center border-4 border-slate-100">
+                    <div className="text-2xl font-bold text-slate-500 mb-2">せいかい</div>
+                    <h1 className="text-6xl font-black text-slate-800 mb-8 font-mono">
+                        {correctCount} <span className="text-3xl text-slate-400">/ {questions.length}</span>
+                    </h1>
+
+                    <div className={`text-4xl font-black mb-12 ${isPassed ? 'text-orange-500 animate-bounce' : 'text-blue-500'}`}>
+                        {isPassed ? '🎉 クリア！' : '💪 もう一度がんばろう！'}
+                    </div>
+
+                    <div className="space-y-4">
+                        {isPassed && nextStage && (
+                            <button
+                                onClick={() => {
+                                    // Navigate to next stage
+                                    // Force a reload of the component by navigating to the new URL
+                                    // Since we are already in PlayPageWrapper, the key prop should handle re-mount
+                                    navigate(`/play/${nextStage.id}`);
+                                }}
+                                className="w-full bg-orange-500 hover:bg-orange-600 text-white text-2xl font-bold py-5 rounded-2xl shadow-lg transition-transform active:scale-95 border-b-4 border-orange-700 active:border-b-0 active:translate-y-1 block"
+                            >
+                                つぎのステージへ！ 🚀
+                            </button>
+                        )}
+
+                        <button
+                            onClick={() => navigate('/')}
+                            className={`w-full font-bold py-4 rounded-xl transition-colors ${isPassed
+                                ? "bg-slate-100 text-slate-500 hover:bg-slate-200"
+                                : "bg-blue-500 hover:bg-blue-600 text-white shadow-lg border-b-4 border-blue-700 active:border-b-0 active:translate-y-1"
+                                }`}
+                        >
+                            {isPassed ? "おわる" : "もういちど！"}
+                        </button>
+                    </div>
                 </div>
-                <button
-                    onClick={() => navigate('/')}
-                    className="w-full max-w-sm bg-blue-500 hover:bg-blue-600 text-white font-bold py-4 rounded-2xl shadow-lg transition-transform active:scale-95"
-                >
-                    Back to Actions
-                </button>
             </div>
         );
     }
@@ -822,7 +862,7 @@ export default function PlayPage() {
                             />
                         )}
                     </div>
-                ) : (currentQ.metadata?.poolType === 'written_add_2d2d' || currentQ.metadata?.poolType === 'written_verify') ? (
+                ) : (currentQ.metadata?.poolType === 'written_add_2d2d' || currentQ.metadata?.poolType === 'written_add' || currentQ.metadata?.poolType === 'written_verify') ? (
                     <WrittenCalcInput
                         key={`written_calc_${currentIndex}`}
                         ref={writtenCalcInputRef}

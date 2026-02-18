@@ -1,4 +1,4 @@
-import { Stage, Question, WeakQuestion, PoolSpec, CompositePoolV2, SkipCountPool, ElevAddPool, MulLinkPool, MulTablePool, MulReviewPool, MulMixPool, PlaceValue2DPool, PlaceValue3DPool, WrittenFormFillPool, WrittenFormChoicePool, WrittenAdd2D2DPool, CarryMarkTapPool, WrittenVerifyPool } from "@/types/curriculum";
+import { Stage, Question, WeakQuestion, PoolSpec, CompositePoolV2, SkipCountPool, ElevAddPool, MulLinkPool, MulTablePool, MulReviewPool, MulMixPool, PlaceValue2DPool, PlaceValue3DPool, WrittenFormFillPool, WrittenFormChoicePool, WrittenAdd2D2DPool, WrittenAddPool, CarryMarkTapPool, MentalAddStepPool, WrittenVerifyPool } from "@/types/curriculum";
 import {
     generateTenComplement,
     generateAddPairs,
@@ -26,6 +26,8 @@ import {
     generateWrittenFormFill,
     generateWrittenFormChoice,
     generateWrittenAdd2D2D,
+    generateWrittenAdd,
+    generateMentalAddStep,
     generateCarryMarkTap,
     generateWrittenVerify
 } from "./math";
@@ -149,6 +151,10 @@ export function generateQuestionsForStage(stage: Stage, weakSet: WeakQuestion[])
         newQuestions = generateWrittenFormChoice(pool as WrittenFormChoicePool, count);
     } else if (pool.type === 'written_add_2d2d') {
         newQuestions = generateWrittenAdd2D2D(pool as WrittenAdd2D2DPool, count);
+    } else if (pool.type === 'written_add') {
+        newQuestions = generateWrittenAdd(pool as WrittenAddPool, count);
+    } else if (pool.type === 'mental_add_step') {
+        newQuestions = generateMentalAddStep(pool as MentalAddStepPool, count);
     } else if (pool.type === 'carry_mark_tap') {
         newQuestions = generateCarryMarkTap(pool as CarryMarkTapPool, count);
     } else if (pool.type === 'written_verify') {
